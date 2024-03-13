@@ -3,3 +3,5 @@ export PS1="\u@\h \W \$ "
 if [ -d "${HOME}/bin" ]; then
   export PATH="${HOME}/bin:${PATH}"
 fi
+
+export EDITOR=vi
