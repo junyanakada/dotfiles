@@ -37,6 +37,28 @@ main() {
     exit 1
   fi
 
+  if ! mkdir -p "${HOME}/.vim" ; then
+    err "Failed to make the vim config directory."
+    exit 1
+  fi
+
+  if [[ ! -f "${HOME}/.vim/autoload/plug.vim" ]]; then
+    if ! which wget >/dev/null ; then
+      err "Wget is not executable."
+    fi
+
+    if ! wget -q -P "${HOME}/.vim/autoload" \
+      "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    then
+      err "Failed to download vim-plug."
+    fi
+  fi
+
+  if ! ln -sf "${workdir}/vim/vimrc" "${HOME}/.vim/vimrc" ; then
+    err "Failed to make the symbolic link to the vimrc."
+    exit 1
+  fi
+
   if ! ln -sf "${workdir}/bash/bash_profile" "${HOME}/.bash_profile" ; then
     err "Failed to make the symbolic link to the bash_profile."
     exit 1

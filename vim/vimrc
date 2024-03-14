@@ -1,0 +1,26 @@
+" See :help defaults.vim
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+syntax enable
+
+" See :help filetype-overview
+filetype plugin indent on
+
+set colorcolumn=""
+set signcolumn=no
+
+" See https://github.com/junegunn/vim-plug
+call plug#begin()
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+call plug#end()
+
+" See :help vim-lsp
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_virtual_text_enabled = 0
