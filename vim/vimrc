@@ -19,8 +19,15 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 " See :help vim-lsp
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_virtual_text_enabled = 0
+
+" See https://black.readthedocs.io/en/stable/integrations/editors.html#vim
+if $VIRTUAL_ENV != ''
+  let g:black_virtualenv = $VIRTUAL_ENV
+endif
+let g:black_use_virtualenv = 1

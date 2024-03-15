@@ -37,6 +37,11 @@ main() {
     exit 1
   fi
 
+  if ! ln -sf "${workdir}/black/black" "${configdir}/black" ; then
+    err "Failed to make the symbolic link to the black config."
+    exit 1
+  fi
+
   if ! mkdir -p "${HOME}/.vim" ; then
     err "Failed to make the vim config directory."
     exit 1
